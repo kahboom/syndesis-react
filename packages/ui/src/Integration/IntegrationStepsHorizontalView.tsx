@@ -2,7 +2,6 @@ import { Grid, Icon } from 'patternfly-react';
 import * as React from 'react';
 
 export interface IIntegrationStepsHorizontalViewProps {
-  // icon?: any;
   steps?: any;
 }
 
