@@ -1,4 +1,3 @@
-// import { object } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
@@ -24,19 +23,9 @@ const integrationRunning = {
   ],
 };
 
-// const integrationStopped = {};
-
-stories
-  .add(
-    'running',
-    withNotes('Verify the integration is running')(() => (
-      <IntegrationStepsHorizontalView steps={integrationRunning.steps} />
-    ))
-  )
-
-  .add(
-    'stopped',
-    withNotes('Verify the integration is stopped')(() => (
-      <IntegrationStepsHorizontalView />
-    ))
-  );
+stories.add(
+  'running',
+  withNotes('Verify the integration is running')(() => (
+    <IntegrationStepsHorizontalView steps={integrationRunning.steps} />
+  ))
+);
