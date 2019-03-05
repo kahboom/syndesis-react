@@ -43,7 +43,7 @@ export class IntegrationStepsHorizontalView extends React.Component<
         <div>
           <p>
             {this.props.description}&nbsp;
-            <Icon name={'pencil'} />>
+            <Icon name={'pencil'} />
           </p>
         </div>
       </>
