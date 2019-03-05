@@ -22,16 +22,13 @@ export class IntegrationStepsHorizontalView extends React.Component<
             </Grid.Col>
             {this.props.steps &&
               this.props.steps.slice(1).map((opt: any, index: any) => (
-                // let last = (index !=== 0) ? 'not first' : 'first';
                 <>
                   <Grid.Col xs={6} md={4}>
                     <Icon name={'angle-right'} />
                   </Grid.Col>
                   <Grid.Col xsHidden={true} md={4}>
                     <span>
-                      <p key={opt.id}>
-                        {index} {opt.name}
-                      </p>
+                      <p key={index}>{opt.name}</p>
                     </span>
                   </Grid.Col>
                 </>
