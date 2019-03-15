@@ -1,4 +1,5 @@
 import {
+  Alert,
   DropdownKebab,
   ListView,
   ListViewInfoItem,
@@ -6,22 +7,37 @@ import {
   MenuItem,
 } from 'patternfly-react';
 import * as React from 'react';
+import { AlertGroup } from '../AlertGroup/AlertGroup';
 
 export interface IIntegrationDetailHistoryListViewItemProps {
-  integrationUpdatedAt: string;
-  integrationVersion: number;
+  integrationId: string;
+  integrationName?: string;
+  integrationUpdatedAt?: string;
+  integrationVersion?: number;
   i18nTextHistoryMenuReplaceDraft?: string;
   i18nTextHistoryMenuUnpublish?: string;
   i18nTextLastPublished?: string;
   i18nTextVersion?: string;
+  onUnpublish: (integrationId: string) => void;
 }
 
 export class IntegrationDetailHistoryListViewItem extends React.Component<
   IIntegrationDetailHistoryListViewItemProps
 > {
+  public handleonUnpublish() {
+    this.props.onUnpublish(this.props.integrationId);
+  }
+
   public render() {
     return (
       <>
+        <AlertGroup>
+          {[
+            <Alert key={0} type="success">
+              <span>Unpublished!</span>
+            </Alert>,
+          ]}
+        </AlertGroup>
         <ListViewItem
           key={1}
           heading={
@@ -31,9 +47,11 @@ export class IntegrationDetailHistoryListViewItem extends React.Component<
             </span>
           }
           actions={
-            <DropdownKebab id="action2kebab" pullRight={true}>
+            <DropdownKebab id="integrationActions" pullRight={true}>
               <MenuItem>{this.props.i18nTextHistoryMenuReplaceDraft}</MenuItem>
-              <MenuItem>{this.props.i18nTextHistoryMenuUnpublish}</MenuItem>
+              <MenuItem onClick={this.handleonUnpublish}>
+                {this.props.i18nTextHistoryMenuUnpublish}
+              </MenuItem>
             </DropdownKebab>
           }
           additionalInfo={[
@@ -46,7 +64,7 @@ export class IntegrationDetailHistoryListViewItem extends React.Component<
             <ListView.Icon
               type="pf"
               name="ok"
-              size="xs"
+              size="sm"
               className="list-view-pf-icon-success"
             />
           }

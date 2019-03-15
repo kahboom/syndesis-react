@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { text } from '@storybook/addon-knobs';
 import { withNotes } from '@storybook/addon-notes';
 import { storiesOf } from '@storybook/react';
@@ -23,7 +24,9 @@ const i18nTextLastPublished = 'Last published on ';
 const i18nTextVersion = 'Version';
 
 const integrationPublished = {
+  id: 'i-LWC6M4_8o0nowToJZkaz',
   isDraft: false,
+  name: 'Hello World',
   updatedAt: 'Feb 24, 2019, 04:27:49',
   version: 1,
 };
@@ -32,9 +35,13 @@ const integrationUnpublished = {
   isDraft: true,
 };
 
+const unpublishText = 'Unpublish';
+const unpublishActionText = unpublishText + ' ' + integrationPublished.name;
+
 const integrationPublishedHistoryItems = [
   <IntegrationDetailHistoryListViewItem
     key={0}
+    integrationId={integrationPublished.id}
     integrationUpdatedAt={text(
       'integrationUpdatedAt',
       integrationPublished.updatedAt
@@ -53,6 +60,7 @@ const integrationPublishedHistoryItems = [
     )}
     i18nTextLastPublished={text('i18nTextLastPublished', i18nTextLastPublished)}
     i18nTextVersion={text('i18nTextVersion', i18nTextVersion)}
+    onUnpublish={action(unpublishActionText)}
   />,
 ];
 
