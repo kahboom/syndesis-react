@@ -18,7 +18,7 @@ export class IntegrationDetailTab extends React.PureComponent<
     return (
       <>
         <div>
-          <IntegrationStepsHorizontalView />
+          <IntegrationStepsHorizontalView steps={this.props.steps} />
           <div>
             {this.props.description ? (
               <p>
