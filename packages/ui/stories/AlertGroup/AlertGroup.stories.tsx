@@ -19,26 +19,26 @@ stories.add('AlertGroup Basic', () => {
   );
 });
 
-let alertList: any[] = [
+const alertList: any[] = [
   {
-    type: 'success',
-    title: 'Success Alert',
     key: 'alert1',
+    title: 'Success Alert',
+    type: 'success',
   },
   {
-    type: 'warning',
-    title: 'Warning Alert',
     key: 'alert2',
+    title: 'Warning Alert',
+    type: 'warning',
   },
   {
-    type: 'error',
-    title: 'Error Alert',
     key: 'alert3',
+    title: 'Error Alert',
+    type: 'error',
   },
   {
-    type: 'info',
-    title: 'Info Alert',
     key: 'alert4',
+    title: 'Info Alert',
+    type: 'info',
   },
 ];
 
