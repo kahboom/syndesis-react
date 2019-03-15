@@ -1,6 +1,5 @@
-import * as React from 'react';
-// import { Alert, AlertProps } from '@patternfly/react-core';
 import { Alert } from 'patternfly-react';
+import * as React from 'react';
 
 interface IAlertGroupProps {
   children?: React.ReactNode[];
@@ -9,17 +8,24 @@ interface IAlertGroupProps {
 
 const AlertGroup: React.FunctionComponent<IAlertGroupProps> = props => {
   const [rendered, setRendered] = React.useState(false);
+  let timer: number;
 
   React.useEffect(() => {
-    setTimeout(() => {
+    timer = setTimeout(() => {
       setRendered(true);
-    }, 2000);
+    }, props.assistiveTechnologyDelay);
   }, []);
 
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timer);
+    };
+  });
+
   const buildAlert = (
-    props: {},
+    alertProps: {},
     key: number,
-    rendered: boolean
+    isRendered: boolean
   ): JSX.Element => {
     return (
       <div
@@ -28,7 +34,7 @@ const AlertGroup: React.FunctionComponent<IAlertGroupProps> = props => {
         aria-relevant="additions text"
         key={key}
       >
-        {rendered && <Alert {...props} key={key} />}
+        {isRendered && <Alert {...alertProps} key={key} />}
       </div>
     );
   };
@@ -37,10 +43,14 @@ const AlertGroup: React.FunctionComponent<IAlertGroupProps> = props => {
     <React.Fragment>
       {props.children &&
         props.children.map((alert: any, index: number) => {
-          return buildAlert({ ...alert.props }, index, rendered); // interactive
+          return buildAlert({ ...alert.props }, index, rendered);
         })}
     </React.Fragment>
   );
 };
 
-export { AlertGroup };
+AlertGroup.defaultProps = {
+  assistiveTechnologyDelay: 200,
+};
+
+export { AlertGroup, IAlertGroupProps };
