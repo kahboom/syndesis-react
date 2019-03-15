@@ -11,7 +11,6 @@ import { AlertGroup } from '../AlertGroup/AlertGroup';
 
 export interface IIntegrationDetailHistoryListViewItemProps {
   integrationId: string;
-  integrationName?: string;
   integrationUpdatedAt?: string;
   integrationVersion?: number;
   i18nTextHistoryMenuReplaceDraft?: string;
