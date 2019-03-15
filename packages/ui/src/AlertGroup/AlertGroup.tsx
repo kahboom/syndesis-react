@@ -2,7 +2,6 @@ import { Alert } from 'patternfly-react';
 import * as React from 'react';
 
 interface IAlertGroupProps {
-  children?: React.ReactNode[];
   assistiveTechnologyDelay?: number;
 }
 
@@ -41,10 +40,11 @@ const AlertGroup: React.FunctionComponent<IAlertGroupProps> = props => {
 
   return (
     <React.Fragment>
-      {props.children &&
-        props.children.map((alert: any, index: number) => {
+      {React.Children.toArray(props.children).map(
+        (alert: any, index: number) => {
           return buildAlert({ ...alert.props }, index, rendered);
-        })}
+        }
+      )}
     </React.Fragment>
   );
 };
